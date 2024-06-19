@@ -1,0 +1,18 @@
+
+    .content-wrapper {
+      margin-left: 0; /* Remove the left margin */
+    }
+    .table-responsive {
+      margin-top: 20px;
+    }
+    .btn-print {
+      font-weight: bold;
+      background-color: #343a40; /* Dark color */
+      color: #fff; /* White text */
+      border-color: #343a40; /* Dark border */
+    }
+    .btn-print:hover {
+      background-color: #23272b; /* Darker color on hover */
+      border-color: #1d2124; /* Darker border on hover */
+    }
+ 
