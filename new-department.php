@@ -1,3 +1,32 @@
+
+<!-- display the data into admin department -->
+
+
+<?php
+include("./includes/config.php");
+
+try {
+    // Fetch all departments
+    $stmt = $conn->prepare("SELECT deptid, deptname, deptshortname, deptcode FROM tbldepartments");
+    $stmt->execute();
+
+    // Fetch all results as an associative array
+    $departments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,33 +97,34 @@
 
         <!-- Departments Table -->
         <div class="table-responsive">
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Department ID</th>
-                <th>Department Name</th>
-                <th>Department Short Name</th>
-                <th>Department Code</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Sample Data (more rows added) -->
-              <tr>
-                <td>001</td>
-                <td>Information Technology</td>
-                <td>IT</td>
-                <td>IT105</td>
-                <td>
-                  <button type="button" class="btn btn-info btn-sm btn-action">View</button>
-                  <button type="button" class="btn btn-primary btn-sm btn-action">Edit</button>
-                  <button type="button" class="btn btn-danger btn-sm btn-action">Delete</button>
-                </td>
-              </tr>
-          
-              <!-- Add more rows as needed -->
-            </tbody>
-          </table>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Department ID</th>
+                        <th>Department Name</th>
+                        <th>Department Short Name</th>
+                        <th>Department Code</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($departments as $department): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($department['deptid']); ?></td>
+                            <td><?php echo htmlspecialchars($department['deptname']); ?></td>
+                            <td><?php echo htmlspecialchars($department['deptshortname']); ?></td>
+                            <td><?php echo htmlspecialchars($department['deptcode']); ?></td>
+                            <td>
+                            <a href="view-department.php?deptid=<?php echo htmlspecialchars($department['deptid']); ?>" class="btn btn-info btn-sm">View</a>
+                            <a href="update-department.php?deptid=<?php echo htmlspecialchars($department['deptid']); ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="delete-department.php?deptid=<?php echo htmlspecialchars($department['deptid']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this department?');">Delete</a>
+
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
         </div>
         <!-- /.table-responsive -->
 
