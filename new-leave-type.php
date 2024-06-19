@@ -186,31 +186,31 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="leaveTypeId">ID</label>
-            <input type="text" class="form-control" id="leaveTypeId" placeholder="Enter ID">
-          </div>
-          <div class="form-group">
-            <label for="leaveType">Leave Type</label>
-            <input type="text" class="form-control" id="leaveType" placeholder="Enter Leave Type">
-          </div>
-          <div class="form-group">
-            <label for="leaveDescription">Description</label>
-            <input type="text" class="form-control" id="leaveDescription" placeholder="Enter Description">
-          </div>
-          <div class="form-group">
-            <label for="daysAllowed">Days Allowed</label>
-            <input type="number" class="form-control" id="daysAllowed" placeholder="Enter Days Allowed">
-          </div>
-          <div class="form-group">
-            <label for="leaveStatus">Status</label>
-            <select class="form-control" id="leaveStatus">
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+      <form action="save-leave-type.php" method="post">
+            <div class="form-group">
+                <label for="leaveTypeId">ID</label>
+                <input type="text" class="form-control" id="leaveTypeId" name="leaveTypeId" placeholder="Enter ID" required>
+            </div>
+            <div class="form-group">
+                <label for="leaveType">Leave Type</label>
+                <input type="text" class="form-control" id="leaveType" name="leaveType" placeholder="Enter Leave Type" required>
+            </div>
+            <div class="form-group">
+                <label for="leaveDescription">Description</label>
+                <input type="text" class="form-control" id="leaveDescription" name="leaveDescription" placeholder="Enter Description" required>
+            </div>
+            <div class="form-group">
+                <label for="daysAllowed">Days Allowed</label>
+                <input type="number" class="form-control" id="daysAllowed" name="daysAllowed" placeholder="Enter Days Allowed" required>
+            </div>
+            <div class="form-group">
+                <label for="leaveStatus">Status</label>
+                <select class="form-control" id="leaveStatus" name="leaveStatus" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
