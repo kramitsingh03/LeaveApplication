@@ -73,7 +73,8 @@
               <tr>
                 <th>Department ID</th>
                 <th>Department Name</th>
-                <th>Designation</th>
+                <th>Department Short Name</th>
+                <th>Department Code</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -81,54 +82,16 @@
               <!-- Sample Data (more rows added) -->
               <tr>
                 <td>001</td>
-                <td>IT Department</td>
-                <td>Software Engineer</td>
+                <td>Information Technology</td>
+                <td>IT</td>
+                <td>IT105</td>
                 <td>
                   <button type="button" class="btn btn-info btn-sm btn-action">View</button>
                   <button type="button" class="btn btn-primary btn-sm btn-action">Edit</button>
                   <button type="button" class="btn btn-danger btn-sm btn-action">Delete</button>
                 </td>
               </tr>
-              <tr>
-                <td>002</td>
-                <td>Human Resources</td>
-                <td>HR Manager</td>
-                <td>
-                  <button type="button" class="btn btn-info btn-sm btn-action">View</button>
-                  <button type="button" class="btn btn-primary btn-sm btn-action">Edit</button>
-                  <button type="button" class="btn btn-danger btn-sm btn-action">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>003</td>
-                <td>Finance</td>
-                <td>Accountant</td>
-                <td>
-                  <button type="button" class="btn btn-info btn-sm btn-action">View</button>
-                  <button type="button" class="btn btn-primary btn-sm btn-action">Edit</button>
-                  <button type="button" class="btn btn-danger btn-sm btn-action">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>004</td>
-                <td>Marketing</td>
-                <td>Marketing Manager</td>
-                <td>
-                  <button type="button" class="btn btn-info btn-sm btn-action">View</button>
-                  <button type="button" class="btn btn-primary btn-sm btn-action">Edit</button>
-                  <button type="button" class="btn btn-danger btn-sm btn-action">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>005</td>
-                <td>Project Management</td>
-                <td>Project Manager</td>
-                <td>
-                  <button type="button" class="btn btn-info btn-sm btn-action">View</button>
-                  <button type="button" class="btn btn-primary btn-sm btn-action">Edit</button>
-                  <button type="button" class="btn btn-danger btn-sm btn-action">Delete</button>
-                </td>
-              </tr>
+          
               <!-- Add more rows as needed -->
             </tbody>
           </table>
@@ -241,20 +204,24 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="addDepartmentForm">
-          <div class="form-group">
-            <label for="departmentId">Department ID</label>
-            <input type="text" class="form-control" id="departmentId" placeholder="Enter Department ID">
-          </div>
-          <div class="form-group">
-            <label for="departmentName">Department Name</label>
-            <input type="text" class="form-control" id="departmentName" placeholder="Enter Department Name">
-          </div>
-          <div class="form-group">
-            <label for="designation">Designation</label>
-            <input type="text" class="form-control" id="designation" placeholder="Enter Designation">
-          </div>
-          <button type="submit" class="btn btn-primary">Add Department</button>
+      <form action="save-department.php" method="POST">
+            <div class="form-group">
+                <label for="departmentId">Department ID</label>
+                <input type="text" class="form-control" id="departmentId" name="deptid" placeholder="Enter Department ID" required>
+            </div>
+            <div class="form-group">
+                <label for="departmentName">Department Name</label>
+                <input type="text" class="form-control" id="departmentName" name="deptname" placeholder="Enter Department Name" required>
+            </div>
+            <div class="form-group">
+                <label for="dept-short-name">Department Short Name</label>
+                <input type="text" class="form-control" id="dept-short-name" name="deptshortname" placeholder="Enter Department Short Name" required>
+            </div>
+            <div class="form-group">
+                <label for="dept-code">Department Code</label>
+                <input type="text" class="form-control" id="dept-code" name="deptcode" placeholder="Enter Department Code" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Department</button>
         </form>
       </div>
     </div>
