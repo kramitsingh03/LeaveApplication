@@ -1,3 +1,31 @@
+<!-- code for display leave type -->
+
+
+<?php
+include("./includes/config.php");
+
+try {
+    // Fetch all leave types
+    $stmt = $conn->prepare("SELECT leaveid, leavetype, description, daysallowed, status FROM tblleavetype");
+    $stmt->execute();
+
+    // Fetch all results as an associative array
+    $leaveTypes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,96 +92,47 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered">
-                  <thead>
+              <table class="table table-bordered">
+                <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>ID</th>
-                      <th>Leave Type</th>
-                      <th>Description</th>
-                      <th>Days Allowed</th>
-                      <th>Status</th>
-                      <th style="width: 150px">Action</th>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Leave Type</th>
+                        <th>Description</th>
+                        <th>Days Allowed</th>
+                        <th>Status</th>
+                        <th style="width: 150px">Action</th>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>LT001</td>
-                      <td>Annual Leave</td>
-                      <td>Annual leave for personal reasons</td>
-                      <td>30</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>LT002</td>
-                      <td>Sick Leave</td>
-                      <td>Leave for medical reasons</td>
-                      <td>15</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>LT003</td>
-                      <td>Maternity Leave</td>
-                      <td>Leave for maternity reasons</td>
-                      <td>90</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>LT004</td>
-                      <td>Emergency Leave</td>
-                      <td>Leave for emergencies</td>
-                      <td>5</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>LT005</td>
-                      <td>Unpaid Leave</td>
-                      <td>Leave without pay</td>
-                      <td>Unlimited</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                </thead>
+                <tbody>
+                    <?php if (count($leaveTypes) > 0): ?>
+                        <?php foreach ($leaveTypes as $index => $leaveType): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars(++$index) ?></td>
+                                <td><?php echo htmlspecialchars($leaveType['leaveid']); ?></td>
+                                <td><?php echo htmlspecialchars($leaveType['leavetype']); ?></td>
+                                <td><?php echo htmlspecialchars($leaveType['description']); ?></td>
+                                <td><?php echo htmlspecialchars($leaveType['daysallowed']); ?></td>
+                                <td>
+                                    <?php if ($leaveType['status'] == 'active'): ?>
+                                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Active</button>
+                                    <?php else: ?>
+                                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Inactive</button>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                <a href="update-leave-type.php?id=<?php echo htmlspecialchars($leaveType['leaveid']); ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="delete-leave-type.php?id=<?php echo htmlspecialchars($leaveType['leaveid']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this leave type?');"><i class="fas fa-trash"></i> Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="7">No leave types found.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
               </div>
               <!-- /.card-body -->
             </div>
