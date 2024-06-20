@@ -202,10 +202,10 @@ try {
             </a>
           </li>
           <li class="nav-item">
-            <a href="new-leave-status.php" class="nav-link">
+            <a href="new-leave-application.php" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
-                Leave Status
+                Leave Application
               </p>
             </a>
           </li>

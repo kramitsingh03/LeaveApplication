@@ -141,6 +141,14 @@ if (!isset($_SESSION['user_id']) || $_SESSION['designation'] != 'admin') {
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="display-leave-application.php" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Leave Application
+              </p>
+            </a>
+          </li>
           <!-- Master Settings -->
           <li class="nav-item">
             <a href="#" class="nav-link">
