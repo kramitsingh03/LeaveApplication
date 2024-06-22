@@ -32,7 +32,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Department Dashboard</title>
+  <title>Admin Dashboard</title>
   <!-- AdminLTE CSS -->
   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
@@ -74,24 +74,14 @@ try {
   <!-- /.navbar -->
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Department Dashboard</h1>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+  <div class="content-wrapper mt-4">
 
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
+      <div class="container">
         <!-- Add New Department Button -->
-        <div class="mb-3">
+         <div><h1>Departments</h1></div>
+        <div class="mb-3" style="float:right">
           <button type="button" class="btn btn-primary btn-add-department" data-toggle="modal" data-target="#addDepartmentModal">Add New Department</button>
         </div>
 
@@ -161,58 +151,9 @@ try {
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Admin Section -->
-          <li class="nav-item">
-            <a href="new-admin.php" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Admin Section
-              </p>
-            </a>
-          </li>
-          <!-- Employee Section -->
-          <li class="nav-item">
-            <a href="new-faculty.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Employee Section
-              </p>
-            </a>
-          </li>
-          <!-- Department Section -->
-          <li class="nav-item">
-            <a href="new-department.php" class="nav-link">
-              <i class="nav-icon fas fa-building"></i>
-              <p>
-                Department Section
-              </p>
-            </a>
-          </li>
-          <!-- Leave Applications -->
-          <li class="nav-item">
-            <a href="new-leave-type.php" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Leave Type
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="new-leave-application.php" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Leave Application
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
+   <?php
+  include("./includes/sidebar.php");
+   ?>
     <!-- /.sidebar -->
   </aside>
   <!-- /.control-sidebar -->

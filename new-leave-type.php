@@ -52,13 +52,20 @@ try {
   </nav>
   <!-- /.navbar -->
 
-  
-   
+
+
+    <!-- Sidebar -->
+   <?php
+  include("./includes/sidebar.php");
+   ?>
+    <!-- /.sidebar -->
+ 
+
 
       
 
   <!-- Content Wrapper. Contains page content -->
-  >
+ 
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -78,7 +85,7 @@ try {
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div class="container d-flex justify-content-end">
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -91,7 +98,7 @@ try {
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
+              <div class="card-body" style="width:70vw">
               <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -115,14 +122,14 @@ try {
                                 <td><?php echo htmlspecialchars($leaveType['daysallowed']); ?></td>
                                 <td>
                                     <?php if ($leaveType['status'] == 'active'): ?>
-                                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Active</button>
+                                        <button class="btn btn-success btn-sm m-1"><i class="fas fa-check"></i> Active</button>
                                     <?php else: ?>
                                         <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Inactive</button>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                <a href="update-leave-type.php?id=<?php echo htmlspecialchars($leaveType['leaveid']); ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                <a href="delete-leave-type.php?id=<?php echo htmlspecialchars($leaveType['leaveid']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this leave type?');"><i class="fas fa-trash"></i> Delete</a>
+                                <a href="update-leave-type.php?id=<?php echo htmlspecialchars($leaveType['leaveid']); ?>" class="btn btn-warning btn-sm m-1"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="delete-leave-type.php?id=<?php echo htmlspecialchars($leaveType['leaveid']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Are you sure you want to delete this leave type?');"><i class="fas fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

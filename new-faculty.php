@@ -189,67 +189,13 @@ try {
   <!-- /.content-wrapper -->
 
    <!-- Main Sidebar Container -->
- <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <span class="brand-text font-weight-light">Employee Dashboard</span>
-    </a>
-
+ 
     <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Admin Section -->
-          <li class="nav-item">
-            <a href="new-admin.php" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Admin Section
-              </p>
-            </a>
-          </li>
-          <!-- Employee Section -->
-          <li class="nav-item">
-            <a href="new-faculty.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Employee Section
-              </p>
-            </a>
-          </li>
-          <!-- Department Section -->
-          <li class="nav-item">
-            <a href="new-department.php" class="nav-link">
-              <i class="nav-icon fas fa-building"></i>
-              <p>
-                Department Section
-              </p>
-            </a>
-          </li>
-          <!-- Leave Applications -->
-          <li class="nav-item">
-            <a href="new-leave-type.php" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Leave Type
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="new-leave-status.php" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Leave Status
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
+      <?php
+      include("./includes/sidebar.php");
+      ?>
     <!-- /.sidebar -->
-  </aside>
+
 
   <!-- Main Footer -->
   <footer class="main-footer">

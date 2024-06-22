@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Execute the statement
         if ($stmt->execute()) {
-           header("Location: new-leave-application.php")
+           header("Location: display-leave-application.php");
         } else {
             echo "Error submitting leave application.";
         }

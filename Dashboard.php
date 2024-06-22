@@ -88,107 +88,14 @@ if (!isset($_SESSION['user_id']) || $_SESSION['designation'] != 'admin') {
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="Dashboard.php" class="brand-link">
       <span class="brand-text font-weight-light">Admin Dashboard</span>
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Admin Section -->
-          <li class="nav-item">
-            <a href="new-admin.php" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Admin Section
-              </p>
-            </a>
-          </li>
-          <!-- Employee Section -->
-          <li class="nav-item">
-            <a href="new-faculty.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Employee Section
-              </p>
-            </a>
-          </li>
-          <!-- Department Section -->
-          <li class="nav-item">
-            <a href="new-department.php" class="nav-link">
-              <i class="nav-icon fas fa-building"></i>
-              <p>
-                Department Section
-              </p>
-            </a>
-          </li>
-          <!-- Leave Applications -->
-          <li class="nav-item">
-            <a href="new-leave-type.php" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Leave Type
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="new-leave-status.php" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Leave Status
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="display-leave-application.php" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Leave Application
-              </p>
-            </a>
-          </li>
-          <!-- Master Settings -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Master Settings
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="new1-department.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Department</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="new1-designation.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Designation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="new1-leavetype.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Leave Type</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="new1-leavestatus.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Status</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
+   <?php 
+include("./includes/sidebar.php")
+   ?>
     <!-- /.sidebar -->
   </aside>
 
@@ -402,14 +309,9 @@ if (!isset($_SESSION['user_id']) || $_SESSION['designation'] != 'admin') {
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <!-- <footer class="main-footer"> -->
-    <!-- To the right -->
-    <!-- <div class="float-right d-none d-sm-inline">
-      Anything you want
-    </div> -->
-    <!-- Default to the left -->
-    <!-- <strong>Copyright &copy; 2024 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved. -->
-  <!-- </footer> -->
+ <?php 
+ include("./includes/footer.php");
+ ?>
 <!-- </div> -->
 <!-- ./wrapper -->
 
