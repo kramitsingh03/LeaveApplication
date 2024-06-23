@@ -1,3 +1,29 @@
+<?php
+include("./includes/config.php");
+
+try {
+    // Fetch all department data
+    $stmt = $conn->prepare("SELECT id, department, designation, status FROM tbldesignation");
+    $stmt->execute();
+    $departments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,84 +83,47 @@ include("./includes/navbar.php");
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered">
-                  <thead>
+              <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>ID</th>
-                      <th>Designation</th>
-                      <th>Status</th>
-                      <th style="width: 150px">Action</th>
+                        <th style="width: 10px">#</th>
+                        <th>ID</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th>Status</th>
+                        <th style="width: 150px">Action</th>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>101</td>
-                      <td>Manager</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>102</td>
-                      <td>Assistant Manager</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>103</td>
-                      <td>Senior Developer</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>104</td>
-                      <td>Junior Developer</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>105</td>
-                      <td>HR</td>
-                      <td>
-                        <button class="btn btn-success btn-sm"><i class="fas fa-check"></i> Activate</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-ban"></i> Deactivate</button>
-                      </td>
-                      <td>
-                        <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                </thead>
+                <tbody>
+                    <?php if (!empty($departments)): ?>
+                        <?php foreach ($departments as $index => $department): ?>
+                            <tr>
+                                <td><?php echo $index + 1; ?></td>
+                                <td><?php echo htmlspecialchars($department['id']); ?></td>
+                                <td><?php echo htmlspecialchars($department['department']); ?></td>
+                                <td><?php echo htmlspecialchars($department['designation']); ?></td>
+                                <td>
+                                    <?php if ($department['status'] == 'active'): ?>
+                                        <button class="btn btn-success btn-sm activate" data-id="<?php echo $department['id']; ?>"><i class="fas fa-ban"></i> activate</button>
+                                    <?php else: ?>
+                                        <button class="btn btn-danger btn-sm deactivate" data-id="<?php echo $department['id']; ?>"><i class="fas fa-check"></i> Deactivate</button>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                <a href="update-designation.php?id=<?php echo $department['id']; ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="delete-designation.php?id=<?php echo $department['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this department?');"><i class="fas fa-trash"></i> Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="6" class="text-center">No data found</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
               </div>
               <!-- /.card-body -->
             </div>
@@ -164,12 +153,30 @@ include("./includes/navbar.php");
         </button>
       </div>
       <div class="modal-body">
-        <form id="addDepartmentForm">
-          <div class="form-group">
-            <label for="departmentName">Department Name</label>
-            <input type="text" class="form-control" id="departmentName" placeholder="Enter Department Name">
-          </div>
-          <button type="submit" class="btn btn-primary">Next</button>
+      <form action="save-designation.php" method="post">
+            <div class="form-group">
+                <label for="departmentName">Department Name</label>
+                <select name="deptname" id="deptname" class="form-control">
+                    <option selected>--Select Department name--</option>
+                    <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="designationName">Designation</label>
+                <input type="text" class="form-control" id="designationName" name="designationName" placeholder="Enter Designation">
+            </div>
+            <div class="form-group">
+                <label for="status" class="form-label">Status</label>
+                <select name="status" id="status" class="form-control">
+                    <option selected>--Select Status--</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
@@ -177,38 +184,6 @@ include("./includes/navbar.php");
 </div>
 
 <!-- Modal for adding designation -->
-<div class="modal fade" id="addDesignationModal" tabindex="-1" role="dialog" aria-labelledby="addDesignationModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addDesignationModalLabel">Add Designation</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="addDesignationForm">
-          <div class="form-group">
-            <label for="designationId">ID</label>
-            <input type="text" class="form-control" id="designationId" placeholder="Enter ID">
-          </div>
-          <div class="form-group">
-            <label for="designationName">Designation</label>
-            <input type="text" class="form-control" id="designationName" placeholder="Enter Designation">
-          </div>
-          <div class="form-group">
-            <label for="designationStatus">Status</label>
-            <select class="form-control" id="designationStatus">
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
