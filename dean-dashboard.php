@@ -82,37 +82,37 @@ if (!isset($_SESSION['user_id']) || $_SESSION['designation'] != 'dean') {
             </a>
           </li> -->
           <!-- Employee Section -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="new-faculty.php" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Employee Section
               </p>
             </a>
-          </li>
+          </li> -->
           <!-- Department Section -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="new-department.php" class="nav-link">
               <i class="nav-icon fas fa-building"></i>
               <p>
                 Department Section
               </p>
             </a>
-          </li>
+          </li> -->
           <!-- Leave Applications -->
           <li class="nav-item">
-            <a href="new-leave-type.php" class="nav-link">
+            <a href="leave-application.php" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
-                Leave Type
+                Leave Application
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="new-leave-status.php" class="nav-link">
+            <a href="dean-dashboard.php" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
-                Leave Status              </p>
+              Manage Leave              </p>
             </a>
           </li>
           <!-- Master Settings -->

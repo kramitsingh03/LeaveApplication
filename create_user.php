@@ -2,9 +2,10 @@
 include("./includes/config.php");
 
 // User details
-$email = 'hod@gmail.com';
-$password = 'hod'; // Replace with your desired password
-$designation = 'hod'; // Replace with 'dean', 'hod', or 'faculty' as needed
+
+$email = 'dean@gmail.com';
+$password = 'dean'; // Replace with your desired password
+$designation = 'dean'; // Replace with 'dean', 'hod', or 'faculty' as needed
 
 // Hash the password
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
