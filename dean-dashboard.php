@@ -82,37 +82,37 @@ if (!isset($_SESSION['user_id']) || $_SESSION['designation'] != 'dean') {
             </a>
           </li> -->
           <!-- Employee Section -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="new-faculty.php" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Employee Section
               </p>
             </a>
-          </li>
+          </li> -->
           <!-- Department Section -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="new-department.php" class="nav-link">
               <i class="nav-icon fas fa-building"></i>
               <p>
                 Department Section
               </p>
             </a>
-          </li>
+          </li> -->
           <!-- Leave Applications -->
           <li class="nav-item">
-            <a href="new-leave-type.php" class="nav-link">
+            <a href="display-dean-leave-application.php" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
-                Leave Type
+                Leave Application
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="new-leave-status.php" class="nav-link">
+            <a href="dean-manage-leave.php" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
-                Leave Status              </p>
+              Manage Leave              </p>
             </a>
           </li>
           <!-- Master Settings -->
@@ -173,55 +173,202 @@ if (!isset($_SESSION['user_id']) || $_SESSION['designation'] != 'dean') {
       </div>
       <!-- /.content-header -->
 
-      <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
-
-          <!-- Button for Apply Leave -->
-          <div class="mb-3">
-            <a href="leave-application.php" class="btn btn-primary">
-              Apply Leave
-            </a>
+      <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Total Employees -->
+          <div class="col-lg-4 col-6">
+            <div class="info-box bg-info">
+              <span class="info-box-icon"><i class="fas fa-users"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Employees</span>
+                <span class="info-box-number">150</span>
+              </div>
+            </div>
           </div>
+          <!-- Total Departments -->
+          <div class="col-lg-4 col-6">
+            <div class="info-box bg-success">
+              <span class="info-box-icon"><i class="fas fa-building"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Departments</span>
+                <span class="info-box-number">8</span>
+              </div>
+            </div>
+          </div>
+          <!-- Total Pending Leave -->
+          <div class="col-lg-4 col-6">
+            <div class="info-box bg-warning">
+              <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Pending Leave</span>
+                <span class="info-box-number">12</span>
+              </div>
+            </div>
+          </div>
+          <!-- Total Rejected Leave -->
+          <div class="col-lg-4 col-6">
+            <div class="info-box bg-danger">
+              <span class="info-box-icon"><i class="fas fa-times"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Rejected Leave</span>
+                <span class="info-box-number">5</span>
+              </div>
+            </div>
+          </div>
+          <!-- Total Approved Leave -->
+          <div class="col-lg-4 col-6">
+            <div class="info-box bg-primary">
+              <span class="info-box-icon"><i class="fas fa-check"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total  Leave</span>
+                <span class="info-box-number">35</span>
+              </div>
+            </div>
+          </div>
+          <!-- Total Recommended Applications -->
+          <div class="col-lg-4 col-6">
+            <div class="info-box bg-secondary">
+              <span class="info-box-icon"><i class="fas fa-thumbs-up"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Recommended Applications</span>
+                <span class="info-box-number">22</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
 
-          <!-- Table -->
-          <div class="card">
-            <div class="card-body">
-              <table class="table table-bordered table-hover">
+        <!-- Recent Employees Table -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h3 class="card-title">Recent Employees</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th>Sl No</th>
+                    <th>Employee Name</th>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th>Leave Type</th>
+                    <th>Current Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- Sample Data (10 rows) -->
                   <tr>
                     <td>1</td>
                     <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td>
-                      <span class="badge badge-warning">Pending</span>
-                    </td>
-                    <td class="table-actions">
-                      <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal"><i class="fas fa-eye"></i> View</a>
-                      <a href="#" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                      <a href="#" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Update</a>
-                      <a href="#" class="btn btn-success btn-sm" data-toggle="modal" data-target="#approveLeaveModal"><i class="fas fa-check"></i> Approve Leave</a>
-                    </td>
+                    <td>EMP001</td>
+                    <td>Sick Leave</td>
+                    <td>Pending</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
                   </tr>
-                  <!-- Add more rows as needed -->
+                  <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>EMP002</td>
+                    <td>Casual Leave</td>
+                    <td>Approved</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>James Johnson</td>
+                    <td>EMP003</td>
+                    <td>Maternity Leave</td>
+                    <td>Rejected</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Linda Williams</td>
+                    <td>EMP004</td>
+                    <td>Annual Leave</td>
+                    <td>Approved</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Robert Brown</td>
+                    <td>EMP005</td>
+                    <td>Sick Leave</td>
+                    <td>Pending</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>Patricia Taylor</td>
+                    <td>EMP006</td>
+                    <td>Casual Leave</td>
+                    <td>Rejected</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>Michael Davis</td>
+                    <td>EMP007</td>
+                    <td>Maternity Leave</td>
+                    <td>Approved</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td>Barbara Martinez</td>
+                    <td>EMP008</td>
+                    <td>Annual Leave</td>
+                    <td>Pending</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Paul Garcia</td>
+                    <td>EMP009</td>
+                    <td>Sick Leave</td>
+                    <td>Rejected</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td>Mary Wilson</td>
+                    <td>EMP010</td>
+                    <td>Casual Leave</td>
+                    <td>Approved</td>
+                    <td><button class="btn btn-info btn-sm">View Details</button></td>
+                  </tr>
                 </tbody>
               </table>
             </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <div class="pagination-wrapper">
+              <nav aria-label="Page navigation">
+                <ul class="pagination">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                  </li>
+                  <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <!-- /.card -->
 
-        </div><!-- /.container-fluid -->
-      </section>
+      </div><!-- /.container-fluid -->
+    </div>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

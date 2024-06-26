@@ -9,7 +9,6 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="Dashboard.php"><i class="fas fa-home"></i> Home</a>
         <p><a href="logout.php">Logout</a></p>
       </li>
     </ul>

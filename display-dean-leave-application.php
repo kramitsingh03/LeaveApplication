@@ -33,39 +33,35 @@ try {
 
     <!-- Sidebar -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <span class="brand-text font-weight-light">Hod Dashboard</span>
-    </a>
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link">
+        <span class="brand-text font-weight-light">Dean Dashboard</span>
+      </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Leave Application -->
-          <li class="nav-item">
-            <a href="faculty-leave-application.php" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
-              <p>
-                Leave Application
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="hod-manage-leave.php" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Manage Leave
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Leave Applications -->
+            <li class="nav-item">
+              <a href="leave-application.php" class="nav-link">
+                <i class="nav-icon fas fa-file-alt"></i>
+                <p>Leave Application</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="dean-manage-leave.php" class="nav-link">
+                <i class="nav-icon fas fa-file-alt"></i>
+                <p>Manage Leave</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
       <?php
       include("./includes/navbar.php");
       ?>
@@ -91,7 +87,7 @@ try {
       <div class="modal-body">
       
       
-      <form action="save-hod-leave-application.php" method="post" enctype="multipart/form-data">
+      <form action="save-leave-application.php" method="post" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-header">
                     <h3>Leave Application Form</h3>

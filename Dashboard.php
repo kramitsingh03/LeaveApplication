@@ -78,8 +78,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['designation'] != 'admin') {
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a>
-        <p><a href="logout.php">Logout</a></p>
+       
+        <p><a class="btn btn-danger" href="logout.php">Logout</a></p>
       </li>
     </ul>
   </nav>

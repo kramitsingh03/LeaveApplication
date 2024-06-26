@@ -2,7 +2,7 @@
 session_start();
 
 // Check if the user is logged in and is an admin
-if (!isset($_SESSION['user_id']) || $_SESSION['designation'] != 'hod') {
+if (!isset($_SESSION['user_id']) || $_SESSION['designation'] != 'dean') {
     header("Location: index.php");
     exit;
 }
@@ -19,10 +19,6 @@ function getStatusBadgeClass($status) {
             return 'badge-success';
         case 'Rejected':
             return 'badge-danger';
-        case 'Active':
-            return 'badge-primary';
-        case 'Inactive':
-            return 'badge-secondary';
         default:
             return 'badge-secondary';
     }
@@ -31,7 +27,7 @@ function getStatusBadgeClass($status) {
 // Update status if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['application_id'])) {
     $application_id = $_POST['application_id'];
-    $new_status = $_POST['action'] == 'recommend' ? 'Active' : 'Inactive';
+    $new_status = $_POST['action'] == 'approve' ? 'Approved' : 'Rejected';
 
     try {
         $stmt = $conn->prepare("UPDATE tblleaveapplication SET status = :status WHERE id = :id");
@@ -106,8 +102,8 @@ try {
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="" class="brand-link">
-        <span class="brand-text font-weight-light">HOD Dashboard</span>
+      <a href="#" class="brand-link">
+        <span class="brand-text font-weight-light">Dean Dashboard</span>
       </a>
 
       <!-- Sidebar -->
@@ -117,7 +113,7 @@ try {
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Leave Applications -->
             <li class="nav-item">
-              <a href="hod-leave-application.php" class="nav-link">
+              <a href="display-dean-leave-application.php" class="nav-link">
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>Leave Application</p>
               </a>
@@ -179,7 +175,7 @@ try {
                         <td class="table-actions">
                           <form method="post" action="">
                             <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($application['id']); ?>">
-                            <button type="submit" name="action" value="recommend" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Recommend</button>
+                            <button type="submit" name="action" value="approve" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Approve</button>
                             <button type="submit" name="action" value="reject" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Reject</button>
                           </form>
                         </td>

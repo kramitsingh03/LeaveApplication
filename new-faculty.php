@@ -211,7 +211,7 @@ try {
 
 <!-- Add Employee Modal -->
 <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="addEmployeeModalLabel">Add New Employee</h5>
@@ -248,15 +248,7 @@ try {
                 <label for="Dob" class="form-label">Date of Birth</label>
                 <input type="date" class="form-control" id="Dob" name="Dob" required>
             </div>
-            <div class="mb-3">
-                <label for="designation" class="form-label">Designation</label>
-                <select class="form-control" name="designation" id="designation" required>
-                    <option value="" disabled selected>--Select Designation--</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="hod">Hod</option>
-                    <option value="dean">Dean</option>
-                </select>
-            </div>
+
             <div class="mb-3">
                 <label for="department" class="form-label">Department</label>
                 <select class="form-control" name="department" id="department" required>
@@ -265,6 +257,16 @@ try {
                     <option value="Information Technology">Information Technology</option>
                     <option value="Civil Engineering">Civil Engineering</option>
                     <option value="Mechanical Engineering">Mechanical Engineering</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="designation" class="form-label">Designation</label>
+                <select class="form-control" name="designation" id="designation" required>
+                    <option value="" disabled selected>--Select Designation--</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="hod">Hod</option>
+                    <option value="dean">Dean</option>
                 </select>
             </div>
             <div class="mb-3">

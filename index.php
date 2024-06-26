@@ -71,7 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       max-width: 500px;
       width: 100%;
       padding: 20px;
-      background-color: red; /* Red color */
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+      backdrop-filter: blur(8px);
       border-radius: 10px;
     }
     .card {

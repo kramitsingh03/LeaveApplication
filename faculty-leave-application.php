@@ -193,7 +193,7 @@ try {
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Reason</th>
-                        <th>Photo</th>
+                        <!-- <th>Photo</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -210,13 +210,13 @@ try {
                                 <td><?php echo htmlspecialchars($application['startdate']); ?></td>
                                 <td><?php echo htmlspecialchars($application['enddate']); ?></td>
                                 <td><?php echo htmlspecialchars($application['reason']); ?></td>
-                                <td>
+                                <!-- <td>
                                     <?php if (!empty($application['photo'])): ?>
                                         <img src="uploads/<?php echo htmlspecialchars($application['photo']); ?>" alt="Photo" style="width: 100px; height: auto;">
                                     <?php else: ?>
                                         No Photo
                                     <?php endif; ?>
-                                </td>
+                                </td> -->
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
